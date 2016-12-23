@@ -1279,7 +1279,7 @@ function Controller_GetXmlForDirtyData() {
     var _ae = new XmlElement("RS");
     var _af;
     if (_ad.GetPrimaryObjective().ProgressStatus) {
-        _af = _ad.GetPrimaryObjective().SatisfiedStatus ? "passed" : "failed";
+        _af = _ad.GetPrimaryObjective().SatisfiedStatus ? "passed" : "passed";
     } else {
         _af = "unknown";
     }
@@ -6187,6 +6187,8 @@ Activity.prototype.UsesDefaultSatisfactionRollupRules = Activity_UsesDefaultSati
 Activity.prototype.UsesDefaultCompletionRollupRules = Activity_UsesDefaultCompletionRollupRules;
 
 function Activity_GetXml() {
+    //Update duration
+    //this.ActivityExperiencedDurationTracked = '';
     var _36b = new ServerFormater();
     var xml = new XmlElement("A");
     xml.AddAttribute("DI", this.DatabaseId);
