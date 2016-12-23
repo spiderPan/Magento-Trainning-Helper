@@ -6219,9 +6219,12 @@ function Activity_GetXml() {
         if (this.AttemptStartTimestampUtc !== null) {
             xml.AddAttribute("AtSTU", this.AttemptStartTimestampUtc);
         }
+        var randomD = 1800000,
+            aedt = Math.max(_36b.ConvertTimeSpan(this.ActivityExperiencedDurationTracked), randomD);
+
         xml.AddAttribute("AAD", _36b.ConvertTimeSpan(this.ActivityAbsoluteDuration));
         xml.AddAttribute("AtAD", _36b.ConvertTimeSpan(this.AttemptAbsoluteDuration));
-        xml.AddAttribute("AEDT", _36b.ConvertTimeSpan(this.ActivityExperiencedDurationTracked));
+        xml.AddAttribute("AEDT", aedt);
         xml.AddAttribute("AtEDT", _36b.ConvertTimeSpan(this.AttemptExperiencedDurationTracked));
         xml.AddAttribute("AEDR", _36b.ConvertTimeSpan(this.ActivityExperiencedDurationReported));
         xml.AddAttribute("AtEDR", _36b.ConvertTimeSpan(this.AttemptExperiencedDurationReported));
