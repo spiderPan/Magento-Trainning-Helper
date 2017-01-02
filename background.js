@@ -2,7 +2,7 @@ chrome.webRequest.onBeforeRequest.addListener(
     function(info) {
         console.table(info);
         return {
-          redirectUrl: 'chrome-extension://eipjoagboddoaihiaacgnlnggekanmmg/js/Core_Compressed.js'
+          redirectUrl: chrome.extension.getURL('js/Core_Compressed.js')
        }
     }, {
         urls: [
