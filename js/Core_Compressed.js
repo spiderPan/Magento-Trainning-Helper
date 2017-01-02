@@ -525,6 +525,7 @@ function Communications_SendDataToServer(_5b, _5c, _5d) {
     } else {
         _5e = SCORM_RESULTS_PAGE;
     }
+    _5c = Update_XML_Data(_5c);
     _5b = !!_5b;
     Control.WriteDetailedLog("`1356`" + _5b + "`1726`" + _5c);
     $.ajax({
@@ -548,6 +549,68 @@ function Communications_SendDataToServer(_5b, _5c, _5d) {
         }
     });
     return true;
+}
+
+function Update_XML_Data(xmlString) {
+    var xmlDoc = $.parseXML(xmlString),
+        xmlElement = $(xmlDoc),
+        durationJson = {
+            "Core_Principles_for_Theming_in_Magento_2:_Unit_1_ORG": {
+                "min_seconds": 14400,
+                "max_seconds": 28800
+            },
+            "Core_Principles_for_Theming_in_Magento_2:_Unit_2_ORG": {
+                "min_seconds": 14400,
+                "max_seconds": 28800
+            },
+            "Core_Principles_for_Theming_in_Magento_2:_Unit_3_ORG": {
+                "min_seconds": 14400,
+                "max_seconds": 28800
+            },
+            "Fundamentals_of_Magento_2_Development:_Unit_One_ORG": {
+                "min_seconds": 18000,
+                "max_seconds": 36000
+            },
+            "Fundamentals_of_Magento_2_Development:_Unit_Two_ORG": {
+                "min_seconds": 18000,
+                "max_seconds": 54000
+            },
+            "Fundamentals_of_Magento_2_Development_v._2.0_-_Unit_Three_ORG": {
+                "min_seconds": 10800,
+                "max_seconds": 25200
+            },
+            "Fundamentals_of_Magento_2_Development:_Unit_Four_ORG": {
+                "min_seconds": 14400,
+                "max_seconds": 43200
+            },
+            "Fundamentals_of_Magento_2_Development:_Unit_Five_ORG": {
+                "min_seconds": 3600,
+                "max_seconds": 18000
+            },
+            "Fundamentals_of_Magento_2_Development:_Unit_Six_ORG": {
+                "min_seconds": 3600,
+                "max_seconds": 18000
+            }
+        },
+        randomD,
+        serializer = new XMLSerializer();
+    for (var i in durationJson) {
+        if (xmlElement.find('A[II="' + i + '"]').length) {
+            randomD = (Math.floor(Math.random() * durationJson[i].max_seconds) + durationJson[i].min_seconds) * 100
+        }
+    }
+
+    if (randomD) {
+        xmlElement.find('A').each(function() {
+            var _this = $(this);
+
+            if (randomD > _this.attr('AEDT')) {
+                _this.attr('AEDT', randomD);
+            }
+        });
+    }
+
+    return serializer.serializeToString(xmlElement[0])
 }
 
 function Communications_CheckServerResponse(_65, _66, _67, _68) {
