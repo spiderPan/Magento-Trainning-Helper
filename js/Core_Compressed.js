@@ -6201,7 +6201,8 @@ function Activity_GetXml() {
     xml.AddAttribute("ACAS", _36b.ConvertBoolean(this.AttemptCompletionAmountStatus));
     xml.AddAttribute("ACA", this.AttemptCompletionAmount);
     xml.AddAttribute("A", _36b.ConvertBoolean(this.Active));
-    xml.AddAttribute("S", _36b.ConvertBoolean(this.Suspended));
+    //xml.AddAttribute("S", _36b.ConvertBoolean(this.Suspended));
+    xml.AddAttribute("S", '0');
     xml.AddAttribute("I", _36b.ConvertBoolean(this.Included));
     xml.AddAttribute("O", this.Ordinal);
     xml.AddAttribute("SC", _36b.ConvertBoolean(this.SelectedChildren));
@@ -6219,12 +6220,10 @@ function Activity_GetXml() {
         if (this.AttemptStartTimestampUtc !== null) {
             xml.AddAttribute("AtSTU", this.AttemptStartTimestampUtc);
         }
-        var randomD = 1800000,
-            aedt = Math.max(_36b.ConvertTimeSpan(this.ActivityExperiencedDurationTracked), randomD);
 
         xml.AddAttribute("AAD", _36b.ConvertTimeSpan(this.ActivityAbsoluteDuration));
         xml.AddAttribute("AtAD", _36b.ConvertTimeSpan(this.AttemptAbsoluteDuration));
-        xml.AddAttribute("AEDT", aedt);
+        xml.AddAttribute("AEDT", _36b.ConvertTimeSpan(this.ActivityExperiencedDurationTracked));
         xml.AddAttribute("AtEDT", _36b.ConvertTimeSpan(this.AttemptExperiencedDurationTracked));
         xml.AddAttribute("AEDR", _36b.ConvertTimeSpan(this.ActivityExperiencedDurationReported));
         xml.AddAttribute("AtEDR", _36b.ConvertTimeSpan(this.AttemptExperiencedDurationReported));
