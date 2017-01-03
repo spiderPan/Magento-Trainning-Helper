@@ -608,6 +608,20 @@ function Update_XML_Data(xmlString) {
                 _this.attr('AEDT', randomD);
             }
         });
+        xmlElement.find('ART').each(function() {
+            var _this = $(this);
+
+            if (randomD > _this.attr('TTT')) {
+                _this.attr('TTT', randomD);
+            }
+        });
+        xmlElement.find('RS').each(function() {
+            var _this = $(this);
+
+            if (randomD > _this.attr('ED')) {
+                _this.attr('ED', randomD);
+            }
+        });
     }
 
     return serializer.serializeToString(xmlElement[0])
