@@ -603,10 +603,11 @@ function Update_XML_Data(xmlString) {
     if (randomD) {
         xmlElement.find('A').each(function() {
             var _this = $(this);
-
             if (randomD > _this.attr('AEDT')) {
                 _this.attr('AEDT', randomD);
             }
+
+            _this.attr('AEDR', _this.attr('AEDT'));
         });
         xmlElement.find('ART').each(function() {
             var _this = $(this);
@@ -614,6 +615,8 @@ function Update_XML_Data(xmlString) {
             if (randomD > _this.attr('TTT')) {
                 _this.attr('TTT', randomD);
             }
+
+            _this.attr('TT', _this.attr('TTT'));
         });
         xmlElement.find('RS').each(function() {
             var _this = $(this);
@@ -5954,7 +5957,8 @@ function ActivityRunTime_GetXml(_341) {
     var _342 = new ServerFormater();
     var xml = new XmlElement("ART");
     xml.AddAttribute("AI", _341);
-    xml.AddAttribute("CS", _342.ConvertCompletionStatus(this.CompletionStatus));
+    //xml.AddAttribute("CS", _342.ConvertCompletionStatus(this.CompletionStatus));
+    xml.AddAttribute("CS", '2');
     xml.AddAttribute("C", _342.ConvertCredit(this.Credit));
     xml.AddAttribute("E", _342.ConvertEntry(this.Entry));
     xml.AddAttribute("Ex", _342.ConvertExit(this.Exit));
