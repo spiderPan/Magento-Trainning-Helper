@@ -579,6 +579,10 @@ function Update_XML_Data(xmlString) {
                 "min_seconds": 10800,
                 "max_seconds": 25200
             },
+            "Fundamentals_of_Magento_2_Development:_Unit_3.5_ORG": {
+                "min_seconds": 10800,
+                "max_seconds": 25200
+            },
             "Fundamentals_of_Magento_2_Development:_Unit_Four_ORG": {
                 "min_seconds": 14400,
                 "max_seconds": 43200
